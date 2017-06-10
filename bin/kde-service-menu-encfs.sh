@@ -289,7 +289,7 @@ encPasswdChange () {
 }
 
 encDirInfo () {
-	infoMsg=`EncFSctl info "${sourceDir}"` || infoMsg="${msg_get_informations_problem}"
+	infoMsg=`encfsctl info "${sourceDir}"` || infoMsg="${msg_get_informations_problem}"
 	"${KDIALOG}" --title "${msg_get_information_title}" --msgbox "${infoMsg}"
 }
 
