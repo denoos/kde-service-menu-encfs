@@ -1,0 +1,49 @@
+kde-service-menu-encfs for KDE
+
+Version 0.5.2
+Added arabic translation tnx to Fayssal Chamekh
+
+Version 0.5.1
+Fix errors in the French translation
+Very small changes in the script to work better and reduce code.
+
+Version 0.5
+Now, the destination directory is in same parent of source directory (if it is writable, otherwise is $HOME).
+Changed desktop menu entry from "Mount, unmount or encrypt" to "Mount, unmount or create".
+Modified install script, now make doc directory if not already exist.
+Added french translation tnx to hcartiaux (Hyacinthe Cartiaux)
+Added support for distro where there is not fuse group.
+Added German translation tnx to Oliver Koch
+
+Version 0.4
+Added configure menu (encryption mode, auto unmount when close file manager).
+Changed internal variable names for better shell's compatibility.
+Changed package name: from servicemenu-encfs to kde-service-menu-encfs.
+No more errors when you decrypt directories name with spaces.
+No more errors when you abort operation.
+Added russian translation tnx to SaloLove (Igor Pavlov)
+For deb package: removed Konqueror dependency (Konqueror now is only an alternative of Dolphin).
+
+Version 0.3
+Changed some icons
+Removed "mount with auto-unmount after 10 min"
+Actions "mount", "unmount" and "create" merged in only one action voice
+	The rigth action is now automagic (I hope :-)
+
+Version 0.2
+Added "mount with auto-unmount after 10 min"
+Added "create from here"
+Added "change password"
+Added "informations"
+Now you can unmount from destination dir too.
+Window dialog if fuse module not loaded.
+Window dialog if you not have permission for using encfs.
+
+Version 0.1.1
+Fixed a little typo. (thanks to Vitormp)
+
+Version 0.1
+First release :-)
+
+Copyright (C) 2007-2013  Giuseppe Benigno
+<giuseppe.benigno(at)gmail.com>
