@@ -25,7 +25,7 @@ TryExec=kde-service-menu-encfs.sh
 Actions=mount_umount_create;_SEPARATOR_;changePasswd;info;configure;
 Name=encfs service menu
 X-KDE-Priority=TopLevel
-X-KDE-Submenu=&encFS
+X-KDE-Submenu=&EncFS
 
 [Desktop Action mount_umount_create]
 Icon=preferences-desktop-cryptography
@@ -34,7 +34,7 @@ Name[ar]=ضم، ألغ الضم أو أنشئ
 Name[de]=Einbinden, lösen oder schaffen
 Name[fr]=Monter, démonter ou créer
 Name[it]=Monta, smonta o crea
-Name[ru]=Монтировать, размонтировать или создавать
+Name[ru]=Монтировать, размонтировать или создать
 Exec=kde-service-menu-encfs.sh en encMountUmountCreate "%f"
 Exec[ar]=kde-service-menu-encfs.sh ar encMountUmountCreate "%f"
 Exec[de]=kde-service-menu-encfs.sh de encMountUmountCreate "%f"
