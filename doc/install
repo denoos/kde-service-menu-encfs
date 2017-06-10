@@ -1,19 +1,11 @@
 Required software:
 -encfs
+-kdialog
 
-
-Installation for KDE4 (only for kde4 version)
-
-Home installation:
-- place the desktop files in $(kde4-config --localprefix)/share/kde4/services/ServiceMenus/
-(in debian based distros ~/.kde/share/kde4/services/ServiceMenus)
-- place the sh scripts files in a directory in your path (I have ~/bin)
-
+Installation for KDE (KF5)
 
 System-wide installation:
-- place the desktop files in $(kde4-config --prefix)/share/kde4/services/ServiceMenus/
-(in debian based distros /usr/share/kde4/services/ServiceMenus/)
+- place the desktop files in /usr/share/kservices5/ServiceMenus/
 - place the sh scripts files in /usr/bin/ or /usr/local/bin/
-
 
 Enjoy

@@ -18,7 +18,6 @@
 #source
 
 # ARGUMENTS: "$lang" "$action" "${sourceDir}"										(sourceDir is without final slash "/")
-set -x
 lang=`echo "${1}" | sed -e "s/@//g"` && shift										# en
 action="${1}" && shift																# encMountUmountCreate
 sourceDir="${1%/}"																	# "/media/cdrom/my secret"
@@ -29,7 +28,7 @@ destDir="${destDir}/${destDirName}"													# /media/cdrom/my_secret_encfs o
 
 CONFIGDIR="$HOME/.config/kde-service-menu"
 CONFIGFILE="${CONFIGDIR}/encfs"
-KDIALOG="$(which kdialog)"                                                          #ToDo: add kdialog to dependencies list
+KDIALOG="$(which kdialog)"
 FILEMANAGER="$(which dolphin)"
 
 #### languages strings messages #################
@@ -229,7 +228,7 @@ load_language_ru () {
 ################################################
 
 checkFuse () {
-	[ -c /dev/fuse ] || { "${KDIALOG}" --title "${msg_error_title}" --caption "${msg_error_title}" --sorry "${msg_checkFuseModule}"; exit; }
+	[ -c /dev/fuse ] || { "${KDIALOG}" --title "${msg_error_title}" --sorry "${msg_checkFuseModule}"; exit; }
 	[ -r /dev/fuse ] && [ -w /dev/fuse ] || { "${KDIALOG}" --title "${msg_error_title}" --sorry "${msg_checkFusePermission}"; exit; }
 }
 
@@ -275,7 +274,7 @@ encMountUmountCreate () {
 				then fusermount -u "${destDir}" && rm -r "${destDir}" && "${KDIALOG}" --title "${msg_info_title}" --passivepopup "${msg_umount_finish}" 5
 				# else mount or encrypt it.
 				else encfsctl info "${sourceDir}" > /dev/null && encMount "${@}" || {
-					"${KDIALOG}" --title "${msg_warning_title}" --icon preferences-desktop-cryptography --warningyesno "${msg_preCreate}" && \
+					"${KDIALOG}" --title "${msg_warning_title}" --warningyesno "${msg_preCreate}" && \
 					encMount "${@}" || \
 					"${KDIALOG}" --title "${msg_info_title}" --passivepopup "${msg_preCreate_cancel}" 5
 					}
@@ -306,8 +305,8 @@ readConfig () {
 }
 
 askConfig () {
-	cryptMode=$("${KDIALOG}" --title "${msg_config_title} 1/2" --icon configure --radiolist "${msg_config_cryptMode}" "standard" "${msg_config_cryptMode_standard}" $([ "x${cryptMode}" = "xstandard" ] && echo "on" || echo "off") "paranoia" "${msg_config_cryptMode_paranoia}" $([ "x${cryptMode}" = "xparanoia" ] && echo "on" || echo "off")) || exit
-	autoUnmount=$("${KDIALOG}" --title "${msg_config_title} 2/2" --icon configure --radiolist "${msg_config_autoUnmount}" "fm" "${msg_config_autoUnmount_fm}" $([ "x${autoUnmount}" = "xfm" ] && echo "on" || echo "off") "no" "${msg_config_autoUnmount_no}" $([ "x${autoUnmount}" = "xno" ] && echo "on" || echo "off")) || exit
+	cryptMode=$("${KDIALOG}" --title "${msg_config_title} 1/2" --radiolist "${msg_config_cryptMode}" "standard" "${msg_config_cryptMode_standard}" $([ "x${cryptMode}" = "xstandard" ] && echo "on" || echo "off") "paranoia" "${msg_config_cryptMode_paranoia}" $([ "x${cryptMode}" = "xparanoia" ] && echo "on" || echo "off")) || exit
+	autoUnmount=$("${KDIALOG}" --title "${msg_config_title} 2/2" --radiolist "${msg_config_autoUnmount}" "fm" "${msg_config_autoUnmount_fm}" $([ "x${autoUnmount}" = "xfm" ] && echo "on" || echo "off") "no" "${msg_config_autoUnmount_no}" $([ "x${autoUnmount}" = "xno" ] && echo "on" || echo "off")) || exit
 }
 
 writeConfig () {
@@ -316,7 +315,7 @@ writeConfig () {
 	echo "CryptMode=${cryptMode}" >> "${CONFIGFILE}" && \
 	echo "AutoUnmount=${autoUnmount}" >> "${CONFIGFILE}" && \
 	"${KDIALOG}" --title "${msg_info_title}" --passivepopup "${msg_config_saved}" 5 || \
-	"${KDIALOG}" --title "${msg_error_title}" --caption "${msg_error_title}" --icon error --msgbox "${msg_save_config_failed}"
+	"${KDIALOG}" --title "${msg_error_title}" --msgbox "${msg_save_config_failed}"
 }
 
 encConfigure () {
